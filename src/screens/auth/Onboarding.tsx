@@ -1,14 +1,21 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Button, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const Onboarding = () => {
+const Onboarding = ({ navigation }: any) => {
     return (
-        <View>
-            <Text>Onboarding</Text>
+        <View style={styles.container}>
+            <Text>Wellcome!</Text>
+            <Button onPress={() => navigation.navigate('Login')} title='Continue' />
         </View>
     )
 }
 
 export default Onboarding
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+});

@@ -3,11 +3,21 @@ import { createStackNavigator } from '@react-navigation/stack';
 import AppNavigator from './AppNavigator';
 import AuthNavigator from './AuthNavigator';
 import { useAuth } from '../context/AuthContext';
+import { ActivityIndicator, View } from 'react-native';
 
 const RootStack = createStackNavigator();
 
 export default function Navigation() {
-    const { authenticated } = useAuth();
+    const { authenticated, loading } = useAuth();
+
+    if (loading) {
+        return (
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                <ActivityIndicator size="large" color="#007bff" />
+            </View>
+        )
+    }
+
     return (
         <NavigationContainer>
             <RootStack.Navigator>
